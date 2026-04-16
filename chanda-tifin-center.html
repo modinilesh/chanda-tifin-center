@@ -1,0 +1,946 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Chanda Tifin Center – Home Food Delivery in Indore</title>
+  <meta name="description" content="Fresh homemade tifin delivered free across Mangliya, Talawali Chanda, Dewas Naka, Nipaniya & Vijay Nagar. Starting at just ₹60/tifin." />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;0,900;1,600&family=Nunito:wght@300;400;600;700;800&display=swap" rel="stylesheet" />
+
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            saffron:  '#D97706',
+            turmeric: '#F59E0B',
+            maroon:   '#7B1D1D',
+            cream:    '#FFFBEF',
+            bark:     '#6B4F2A',
+            mud:      '#2C1A0E',
+            leaf:     '#3B6E3A',
+          },
+          fontFamily: {
+            display: ['"Playfair Display"', 'serif'],
+            body:    ['Nunito', 'sans-serif'],
+          },
+        }
+      }
+    }
+  </script>
+
+  <style>
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Nunito', sans-serif;
+      background-color: #FFFBEF;
+      color: #2C1A0E;
+      overflow-x: hidden;
+    }
+    h1, h2, h3, h4 { font-family: 'Playfair Display', serif; }
+
+    /* ── Texture overlay ── */
+    .paper-texture {
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='100'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.03'/%3E%3C/svg%3E");
+    }
+
+    /* ── Scroll reveal ── */
+    .reveal {
+      opacity: 0;
+      transform: translateY(28px);
+      transition: opacity 0.65s cubic-bezier(.4,0,.2,1), transform 0.65s cubic-bezier(.4,0,.2,1);
+    }
+    .reveal.up { opacity: 1; transform: translateY(0); }
+    .reveal-delay-1 { transition-delay: 0.1s; }
+    .reveal-delay-2 { transition-delay: 0.2s; }
+    .reveal-delay-3 { transition-delay: 0.3s; }
+    .reveal-delay-4 { transition-delay: 0.4s; }
+
+    /* ── Float animation ── */
+    @keyframes floatY {
+      0%, 100% { transform: translateY(0); }
+      50%       { transform: translateY(-10px); }
+    }
+    .float { animation: floatY 4s ease-in-out infinite; }
+    .float-slow { animation: floatY 6s ease-in-out infinite; }
+    .float-delay { animation: floatY 4s ease-in-out 2s infinite; }
+
+    /* ── Hero gradient bg ── */
+    .hero-bg {
+      background: radial-gradient(ellipse 80% 60% at 70% 40%, #FDE68A44 0%, transparent 60%),
+                  radial-gradient(ellipse 60% 80% at 10% 80%, #D9770618 0%, transparent 50%),
+                  #FFFBEF;
+    }
+
+    /* ── Divider ornament ── */
+    .ornament {
+      display: flex; align-items: center; gap: 14px;
+    }
+    .ornament::before, .ornament::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, #D97706aa);
+    }
+    .ornament::after {
+      background: linear-gradient(90deg, #D97706aa, transparent);
+    }
+
+    /* ── Cards ── */
+    .lift-card {
+      transition: transform 0.28s ease, box-shadow 0.28s ease;
+    }
+    .lift-card:hover {
+      transform: translateY(-7px);
+      box-shadow: 0 24px 48px rgba(92,55,10,0.14);
+    }
+
+    /* ── CTA pulse ── */
+    @keyframes ctaPulse {
+      0%   { box-shadow: 0 0 0 0   rgba(217,119,6,.55); }
+      60%  { box-shadow: 0 0 0 14px rgba(217,119,6,.0); }
+      100% { box-shadow: 0 0 0 0   rgba(217,119,6,.0); }
+    }
+    .cta-pulse { animation: ctaPulse 2.2s ease-out infinite; }
+
+    /* ── WhatsApp green ── */
+    .wa-green {
+      background: linear-gradient(135deg, #25D366 0%, #128C7E 100%);
+      transition: all .3s ease;
+    }
+    .wa-green:hover {
+      background: linear-gradient(135deg, #1ebe5d 0%, #0a7a6e 100%);
+      transform: translateY(-2px);
+      box-shadow: 0 10px 24px rgba(37,211,102,.35);
+    }
+
+    /* ── Pricing popular card ── */
+    .popular-outline {
+      box-shadow: 0 0 0 3px #D97706, 0 24px 56px rgba(217,119,6,.22);
+    }
+
+    /* ── Form elements ── */
+    select, input[type=text], textarea {
+      appearance: none; -webkit-appearance: none;
+      border: 2px solid #D9770630;
+      border-radius: 14px;
+      padding: 12px 16px;
+      font-family: 'Nunito', sans-serif;
+      font-size: 15px;
+      color: #2C1A0E;
+      background: white;
+      width: 100%;
+      transition: border-color .2s;
+    }
+    select:focus, input[type=text]:focus { outline: none; border-color: #D97706; }
+    select { background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24'%3E%3Cpath d='M7 10l5 5 5-5z' fill='%23D97706'/%3E%3C/svg%3E");
+      background-repeat: no-repeat; background-position: right 14px center; padding-right: 40px; cursor: pointer; }
+
+    /* ── Radio cards ── */
+    .radio-card {
+      border: 2px solid #D9770628;
+      border-radius: 14px;
+      cursor: pointer;
+      transition: border-color .2s, background .2s;
+    }
+    .radio-card:has(input:checked) {
+      border-color: #D97706;
+      background: #FFFBEF;
+    }
+    /* fallback for browsers without :has */
+    .radio-card.selected {
+      border-color: #D97706;
+      background: #FFFBEF;
+    }
+
+    /* ── Decorative blob ── */
+    .blob {
+      border-radius: 60% 40% 70% 30% / 50% 60% 40% 50%;
+    }
+
+    /* ── Sticky WhatsApp FAB ── */
+    #wa-fab {
+      position: fixed; bottom: 24px; right: 24px; z-index: 999;
+      width: 58px; height: 58px;
+      background: linear-gradient(135deg, #25D366, #128C7E);
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      box-shadow: 0 6px 20px rgba(37,211,102,.5);
+      transition: transform .3s, box-shadow .3s;
+    }
+    #wa-fab:hover { transform: scale(1.12); box-shadow: 0 10px 30px rgba(37,211,102,.6); }
+
+    /* ── Scrollbar ── */
+    ::-webkit-scrollbar { width: 5px; }
+    ::-webkit-scrollbar-track { background: #FFFBEF; }
+    ::-webkit-scrollbar-thumb { background: #D97706; border-radius: 3px; }
+
+    /* ── Navbar blur ── */
+    .nav-glass {
+      background: rgba(255,251,239,.92);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+    }
+
+    /* ── Image circle decoration ── */
+    .img-ring {
+      position: absolute;
+      border: 2px dashed rgba(217,119,6,.25);
+      border-radius: 50%;
+      animation: spin 28s linear infinite;
+    }
+    @keyframes spin { to { transform: rotate(360deg); } }
+    .img-ring-2 {
+      border-style: solid;
+      border-color: rgba(217,119,6,.1);
+      animation-direction: reverse;
+      animation-duration: 20s;
+    }
+
+    /* ── Section badge ── */
+    .section-badge {
+      display: inline-flex; align-items: center; gap: 6px;
+      background: rgba(217,119,6,.1);
+      border: 1px solid rgba(217,119,6,.3);
+      color: #D97706;
+      border-radius: 999px;
+      padding: 4px 16px;
+      font-family: 'Nunito', sans-serif;
+      font-size: 12px; font-weight: 700;
+      letter-spacing: .08em; text-transform: uppercase;
+    }
+
+    /* ── Trust bar pattern ── */
+    .trust-bar {
+      background: linear-gradient(135deg, #7B1D1D 0%, #9B2C2C 100%);
+    }
+
+    /* ── Mobile nav menu ── */
+    #mobile-menu { display: none; }
+    #mobile-menu.open { display: block; }
+  </style>
+</head>
+
+<body class="paper-texture">
+
+<!-- ═══════════════════════ FLOATING WhatsApp ═══════════════════════ -->
+<a id="wa-fab" href="https://wa.me/918319341504" target="_blank" title="Chat on WhatsApp">
+  <svg width="28" height="28" viewBox="0 0 24 24" fill="white">
+    <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+  </svg>
+</a>
+
+<!-- ═══════════════════════ ANNOUNCEMENT BAR ═══════════════════════ -->
+<div class="bg-maroon text-white text-center py-2 text-xs md:text-sm font-body font-semibold tracking-wide">
+  🎉 Limited to <span class="underline decoration-dotted">50 orders per day</span> to ensure quality &nbsp;·&nbsp; 🚚 <span class="underline decoration-dotted">FREE delivery</span> across 5 areas in Indore
+</div>
+
+<!-- ═══════════════════════ NAVBAR ═══════════════════════ -->
+<nav class="nav-glass sticky top-0 z-50 border-b border-saffron/15 shadow-sm">
+  <div class="max-w-6xl mx-auto px-5 py-3.5 flex items-center justify-between">
+
+    <!-- Logo -->
+    <a href="#" class="flex items-center gap-3">
+      <div class="w-10 h-10 bg-gradient-to-br from-saffron to-amber-700 rounded-xl flex items-center justify-center shadow-md">
+        <span class="font-display font-black text-white text-lg leading-none">C</span>
+      </div>
+      <div>
+        <div class="font-display font-bold text-maroon text-[17px] leading-tight">Chanda Tifin</div>
+        <div class="text-[10px] text-bark/70 font-body leading-tight">Center · Indore</div>
+      </div>
+    </a>
+
+    <!-- Desktop links -->
+    <div class="hidden md:flex items-center gap-7 font-body text-sm font-semibold text-bark/80">
+      <a href="#why-us"  class="hover:text-saffron transition-colors">Why Us</a>
+      <a href="#menu"    class="hover:text-saffron transition-colors">Menu</a>
+      <a href="#pricing" class="hover:text-saffron transition-colors">Pricing</a>
+      <a href="#order"   class="hover:text-saffron transition-colors">Order</a>
+      <a href="#contact" class="hover:text-saffron transition-colors">Contact</a>
+    </div>
+
+    <!-- CTA -->
+    <div class="flex items-center gap-3">
+      <a href="tel:8319341504" class="hidden sm:flex items-center gap-2 border-2 border-saffron/40 text-saffron px-4 py-2 rounded-full text-sm font-body font-bold hover:bg-saffron hover:text-white transition-all">
+        📞 Call
+      </a>
+      <a href="#order" class="bg-saffron text-white px-5 py-2 rounded-full text-sm font-body font-bold hover:bg-maroon transition-all cta-pulse">
+        Order Now
+      </a>
+      <!-- Hamburger -->
+      <button id="hamburger" class="md:hidden p-1.5" onclick="toggleMenu()">
+        <div class="space-y-1.5">
+          <span class="block w-6 h-0.5 bg-mud"></span>
+          <span class="block w-6 h-0.5 bg-mud"></span>
+          <span class="block w-4 h-0.5 bg-mud"></span>
+        </div>
+      </button>
+    </div>
+  </div>
+
+  <!-- Mobile menu -->
+  <div id="mobile-menu" class="md:hidden border-t border-saffron/10 bg-cream px-5 py-4 space-y-3">
+    <a href="#why-us"  onclick="toggleMenu()" class="block font-body font-semibold text-bark hover:text-saffron py-1">Why Us</a>
+    <a href="#menu"    onclick="toggleMenu()" class="block font-body font-semibold text-bark hover:text-saffron py-1">Menu</a>
+    <a href="#pricing" onclick="toggleMenu()" class="block font-body font-semibold text-bark hover:text-saffron py-1">Pricing</a>
+    <a href="#order"   onclick="toggleMenu()" class="block font-body font-semibold text-bark hover:text-saffron py-1">Order</a>
+    <a href="tel:8319341504" class="block font-body font-semibold text-saffron py-1">📞 8319341504</a>
+  </div>
+</nav>
+
+
+<!-- ═══════════════════════════════════════════════════════════════
+     HERO
+═══════════════════════════════════════════════════════════════ -->
+<section class="hero-bg min-h-[92vh] flex items-center relative overflow-hidden py-16">
+
+  <!-- decorative blobs -->
+  <div class="absolute -top-24 -right-24 w-96 h-96 blob bg-turmeric/10 blur-2xl pointer-events-none"></div>
+  <div class="absolute bottom-0 -left-16 w-72 h-72 blob bg-saffron/10 blur-2xl pointer-events-none"></div>
+
+  <div class="max-w-6xl mx-auto px-5 grid md:grid-cols-2 gap-12 lg:gap-20 items-center w-full">
+
+    <!-- Left -->
+    <div class="space-y-7">
+
+      <div class="section-badge float-slow">
+        🍽️ Homemade &nbsp;·&nbsp; Fresh Daily &nbsp;·&nbsp; Indore
+      </div>
+
+      <h1 class="font-display text-5xl md:text-6xl lg:text-7xl font-black text-mud leading-[1.08]">
+        Ghar Jaisa<br/>
+        <em class="not-italic text-saffron">Khana,</em><br/>
+        <span class="relative inline-block">
+          Delivered.
+          <span class="absolute -bottom-1 left-0 w-full h-1 bg-gradient-to-r from-saffron to-transparent rounded-full"></span>
+        </span>
+      </h1>
+
+      <p class="font-body text-bark text-lg leading-relaxed max-w-md">
+        Wholesome home-cooked tifins made fresh every day — 3 fluffy fulkas, rice, daal & seasonal sabzi — delivered <strong class="text-leaf">FREE</strong> right to your door.
+      </p>
+
+      <!-- Quick highlights -->
+      <div class="flex flex-wrap gap-2.5">
+        <span class="inline-flex items-center gap-1.5 bg-white/80 border border-saffron/20 rounded-xl px-3.5 py-2 text-sm font-body font-semibold text-bark shadow-sm">🚚 Free Delivery</span>
+        <span class="inline-flex items-center gap-1.5 bg-white/80 border border-saffron/20 rounded-xl px-3.5 py-2 text-sm font-body font-semibold text-bark shadow-sm">🌿 Hygienic Kitchen</span>
+        <span class="inline-flex items-center gap-1.5 bg-white/80 border border-saffron/20 rounded-xl px-3.5 py-2 text-sm font-body font-semibold text-bark shadow-sm">🎖️ Only 50 Orders/Day</span>
+        <span class="inline-flex items-center gap-1.5 bg-white/80 border border-saffron/20 rounded-xl px-3.5 py-2 text-sm font-body font-semibold text-bark shadow-sm">☀️ Lunch &amp; 🌙 Dinner</span>
+      </div>
+
+      <!-- CTA row -->
+      <div class="flex flex-col sm:flex-row gap-3 pt-2">
+        <a href="#order" class="cta-pulse bg-saffron text-white px-8 py-4 rounded-full font-body font-extrabold text-lg text-center hover:bg-maroon transition-all duration-300">
+          Order Your Tifin →
+        </a>
+        <a href="https://wa.me/918319341504" target="_blank" class="wa-green text-white px-8 py-4 rounded-full font-body font-extrabold text-lg flex items-center justify-center gap-2">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+          WhatsApp Us
+        </a>
+      </div>
+
+      <!-- Price callout -->
+      <div class="flex items-center gap-5 pt-1">
+        <div>
+          <div class="font-display text-3xl font-black text-mud">₹80</div>
+          <div class="font-body text-xs text-bark">One-time · Free delivery</div>
+        </div>
+        <div class="h-10 w-px bg-saffron/25"></div>
+        <div>
+          <div class="font-display text-3xl font-black text-maroon">₹60</div>
+          <div class="font-body text-xs text-bark">Monthly plan · <span class="text-leaf font-semibold">Save 25%</span></div>
+        </div>
+        <div class="h-10 w-px bg-saffron/25"></div>
+        <div class="font-body text-xs text-bark italic max-w-[120px]">
+          "Only 50 tifins/day — quality over quantity"
+        </div>
+      </div>
+    </div>
+
+    <!-- Right – thali image -->
+    <div class="relative flex items-center justify-center">
+      <!-- Rotating rings -->
+      <div class="img-ring absolute" style="width:360px;height:360px;"></div>
+      <div class="img-ring img-ring-2 absolute" style="width:310px;height:310px;"></div>
+
+      <!-- Thali photo -->
+      <div class="relative z-10">
+        <img
+          src="https://images.unsplash.com/photo-1585937421612-70a008356fbe?auto=format&fit=crop&w=720&q=85"
+          alt="Traditional Indian Thali – Chanda Tifin Center"
+          class="w-72 h-72 md:w-80 md:h-80 lg:w-[340px] lg:h-[340px] rounded-full object-cover shadow-2xl border-[10px] border-white"
+          loading="eager"
+          onerror="this.src='https://images.unsplash.com/photo-1546833999-b9f581a1996d?auto=format&fit=crop&w=720&q=85'"
+        />
+      </div>
+
+      <!-- Floating badge 1 – Orders -->
+      <div class="float absolute top-2 right-0 md:right-4 bg-white rounded-2xl shadow-xl px-5 py-3.5 text-center z-20 border border-saffron/10">
+        <div class="font-display font-black text-maroon text-2xl leading-none">50</div>
+        <div class="font-body text-[11px] text-bark font-semibold mt-0.5">Orders / Day<br/>Max.</div>
+      </div>
+
+      <!-- Floating badge 2 – Free delivery -->
+      <div class="float float-delay absolute bottom-4 left-0 md:-left-4 bg-saffron text-white rounded-2xl shadow-xl px-5 py-3.5 text-center z-20">
+        <div class="font-display font-black text-2xl leading-none">FREE</div>
+        <div class="font-body text-[11px] font-semibold mt-0.5">Delivery</div>
+      </div>
+
+      <!-- Floating badge 3 – Rating -->
+      <div class="float-slow absolute -bottom-2 right-0 md:right-10 bg-white rounded-2xl shadow-lg px-4 py-3 z-20 border border-saffron/10">
+        <div class="flex items-center gap-1 text-amber-400 text-lg leading-none">★★★★★</div>
+        <div class="font-body text-[10px] text-bark text-center font-semibold mt-0.5">Quality</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ═══════════════════════════════════════════════════════════════
+     TRUST BAR
+═══════════════════════════════════════════════════════════════ -->
+<section class="trust-bar py-8">
+  <div class="max-w-5xl mx-auto px-5 grid grid-cols-2 md:grid-cols-4 gap-6">
+    <div class="flex items-center gap-3 text-white">
+      <div class="w-12 h-12 bg-white/10 rounded-xl flex items-center justify-center text-2xl flex-shrink-0">🏠</div>
+      <div>
+        <div class="font-display font-bold text-sm">Home Cooked</div>
+        <div class="font-body text-xs text-white/65 mt-0.5">Made with love daily</div>
+      </div>
+    </div>
+    <div class="flex items-center gap-3 text-white">
+      <div class="w-12 h-12 bg-white/10 rounded-xl flex items-center justify-center text-2xl flex-shrink-0">✨</div>
+      <div>
+        <div class="font-display font-bold text-sm">Quality First</div>
+        <div class="font-body text-xs text-white/65 mt-0.5">No shortcuts, ever</div>
+      </div>
+    </div>
+    <div class="flex items-center gap-3 text-white">
+      <div class="w-12 h-12 bg-white/10 rounded-xl flex items-center justify-center text-2xl flex-shrink-0">🚚</div>
+      <div>
+        <div class="font-display font-bold text-sm">Free Delivery</div>
+        <div class="font-body text-xs text-white/65 mt-0.5">5 areas in Indore</div>
+      </div>
+    </div>
+    <div class="flex items-center gap-3 text-white">
+      <div class="w-12 h-12 bg-white/10 rounded-xl flex items-center justify-center text-2xl flex-shrink-0">🍮</div>
+      <div>
+        <div class="font-display font-bold text-sm">Bonus Sweets</div>
+        <div class="font-body text-xs text-white/65 mt-0.5">Occasional surprises!</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ═══════════════════════════════════════════════════════════════
+     WHY CHOOSE US
+═══════════════════════════════════════════════════════════════ -->
+<section id="why-us" class="py-24 bg-white/50">
+  <div class="max-w-6xl mx-auto px-5">
+
+    <div class="text-center mb-16 reveal">
+      <div class="section-badge mb-4">Our Promise</div>
+      <h2 class="font-display text-4xl md:text-5xl font-bold text-mud mb-4">
+        Why People <em class="text-saffron">Love</em> Our Tifin
+      </h2>
+      <div class="ornament max-w-xs mx-auto mb-5"><span class="text-saffron text-lg">🌿</span></div>
+      <p class="font-body text-bark max-w-lg mx-auto">We don't just deliver food. We deliver the warmth of a home-cooked meal, every single day.</p>
+    </div>
+
+    <div class="grid md:grid-cols-3 gap-7">
+
+      <div class="lift-card bg-white rounded-3xl p-8 border border-saffron/10 reveal reveal-delay-1">
+        <div class="w-16 h-16 bg-saffron/10 rounded-2xl flex items-center justify-center text-3xl mb-5">🍽️</div>
+        <h3 class="font-display text-xl font-bold text-mud mb-3">Taste Like Home</h3>
+        <p class="font-body text-bark text-sm leading-relaxed">We obsess over flavour. No pre-packaged masalas, no shortcuts. Every bite is crafted with the same love your mother puts into cooking — because that's the only standard we accept.</p>
+      </div>
+
+      <div class="lift-card bg-white rounded-3xl p-8 border border-saffron/10 reveal reveal-delay-2">
+        <div class="w-16 h-16 bg-leaf/10 rounded-2xl flex items-center justify-center text-3xl mb-5">🧼</div>
+        <h3 class="font-display text-xl font-bold text-mud mb-3">Uncompromised Hygiene</h3>
+        <p class="font-body text-bark text-sm leading-relaxed">We <strong>deliberately cap orders at 50 per day</strong> — not because we can't handle more, but because every tifin deserves individual attention and the highest cleanliness standards.</p>
+      </div>
+
+      <div class="lift-card bg-white rounded-3xl p-8 border border-saffron/10 reveal reveal-delay-3">
+        <div class="w-16 h-16 bg-maroon/8 rounded-2xl flex items-center justify-center text-3xl mb-5">🎁</div>
+        <h3 class="font-display text-xl font-bold text-mud mb-3">Sweet Surprises</h3>
+        <p class="font-body text-bark text-sm leading-relaxed">Because a meal isn't complete without something sweet. We occasionally add <strong>gulab jamun, rasmalai, jalebi, kheer, halva</strong> and more — just to make your day a little brighter.</p>
+      </div>
+
+    </div>
+
+    <!-- Stats row -->
+    <div class="mt-14 grid grid-cols-3 gap-4 reveal">
+      <div class="text-center bg-white rounded-2xl py-6 px-4 border border-saffron/10">
+        <div class="font-display text-4xl font-black text-saffron">50</div>
+        <div class="font-body text-sm text-bark font-semibold mt-1">Max orders/day<br/><span class="text-xs font-normal text-bark/60">Quality guaranteed</span></div>
+      </div>
+      <div class="text-center bg-white rounded-2xl py-6 px-4 border border-saffron/10">
+        <div class="font-display text-4xl font-black text-saffron">5</div>
+        <div class="font-body text-sm text-bark font-semibold mt-1">Areas served<br/><span class="text-xs font-normal text-bark/60">Free delivery</span></div>
+      </div>
+      <div class="text-center bg-white rounded-2xl py-6 px-4 border border-saffron/10">
+        <div class="font-display text-4xl font-black text-saffron">2×</div>
+        <div class="font-body text-sm text-bark font-semibold mt-1">Daily service<br/><span class="text-xs font-normal text-bark/60">Lunch &amp; Dinner</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ═══════════════════════════════════════════════════════════════
+     WHAT'S IN YOUR TIFIN
+═══════════════════════════════════════════════════════════════ -->
+<section id="menu" class="py-24 relative overflow-hidden">
+
+  <!-- bg decoration -->
+  <div class="absolute top-0 right-0 w-96 h-96 bg-turmeric/6 blob blur-3xl pointer-events-none"></div>
+
+  <div class="max-w-6xl mx-auto px-5">
+
+    <div class="text-center mb-16 reveal">
+      <div class="section-badge mb-4">Every Single Day</div>
+      <h2 class="font-display text-4xl md:text-5xl font-bold text-mud mb-4">What's Inside Your Tifin?</h2>
+      <div class="ornament max-w-xs mx-auto"><span class="text-saffron text-lg">🌾</span></div>
+    </div>
+
+    <div class="grid grid-cols-2 md:grid-cols-4 gap-5 mb-7">
+
+      <div class="lift-card bg-white rounded-3xl p-7 text-center shadow-sm border border-saffron/10 reveal reveal-delay-1">
+        <div class="text-5xl mb-4">🫓</div>
+        <h3 class="font-display font-bold text-mud text-xl mb-1">3 Fulka</h3>
+        <p class="font-body text-bark text-xs">Soft, fluffy rotis<br/>baked fresh</p>
+      </div>
+
+      <div class="lift-card bg-white rounded-3xl p-7 text-center shadow-sm border border-saffron/10 reveal reveal-delay-2">
+        <div class="text-5xl mb-4">🍚</div>
+        <h3 class="font-display font-bold text-mud text-xl mb-1">Rice</h3>
+        <p class="font-body text-bark text-xs">Perfectly steamed<br/>every day</p>
+      </div>
+
+      <div class="lift-card bg-white rounded-3xl p-7 text-center shadow-sm border border-saffron/10 reveal reveal-delay-3">
+        <div class="text-5xl mb-4">🫘</div>
+        <h3 class="font-display font-bold text-mud text-xl mb-1">Daal</h3>
+        <p class="font-body text-bark text-xs">Freshly prepared<br/>with real tempering</p>
+      </div>
+
+      <div class="lift-card bg-white rounded-3xl p-7 text-center shadow-sm border border-saffron/10 reveal reveal-delay-4">
+        <div class="text-5xl mb-4">🥦</div>
+        <h3 class="font-display font-bold text-mud text-xl mb-1">Sabzi</h3>
+        <p class="font-body text-bark text-xs">Seasonal vegetables<br/>cooked to perfection</p>
+      </div>
+
+    </div>
+
+    <!-- Sweets banner -->
+    <div class="lift-card bg-gradient-to-r from-amber-50 to-yellow-50 border border-amber-200 rounded-3xl p-7 flex flex-col md:flex-row items-center gap-5 reveal">
+      <div class="text-5xl">🍮</div>
+      <div>
+        <h3 class="font-display font-bold text-maroon text-xl mb-1">Occasional Sweet Surprises!</h3>
+        <p class="font-body text-bark text-sm">We sometimes add a special sweet — <strong>Gulab Jamun · Rasmalai · Jalebi · Kheer · Halva</strong> and more — because happy customers deserve sweet endings.</p>
+      </div>
+      <div class="flex-shrink-0 bg-saffron text-white rounded-2xl px-5 py-3 font-body font-bold text-sm text-center whitespace-nowrap">
+        🎉 Bonus<br/>Surprise
+      </div>
+    </div>
+
+  </div>
+</section>
+
+
+<!-- ═══════════════════════════════════════════════════════════════
+     PRICING
+═══════════════════════════════════════════════════════════════ -->
+<section id="pricing" class="py-24 bg-white/50">
+  <div class="max-w-5xl mx-auto px-5">
+
+    <div class="text-center mb-16 reveal">
+      <div class="section-badge mb-4">Transparent Pricing</div>
+      <h2 class="font-display text-4xl md:text-5xl font-bold text-mud mb-4">Choose Your Plan</h2>
+      <p class="font-body text-bark max-w-sm mx-auto">Subscribe and save more. All plans include <strong class="text-leaf">FREE delivery</strong>.</p>
+    </div>
+
+    <div class="grid md:grid-cols-3 gap-6 items-end">
+
+      <!-- One-time -->
+      <div class="lift-card bg-white rounded-3xl p-8 border-2 border-saffron/15 shadow-sm reveal reveal-delay-1">
+        <div class="font-body text-xs text-bark/60 uppercase tracking-widest font-bold mb-3">One Time</div>
+        <div class="flex items-baseline gap-1 mb-1">
+          <span class="font-display text-5xl font-black text-mud">₹80</span>
+          <span class="font-body text-bark text-sm">/ tifin</span>
+        </div>
+        <p class="font-body text-bark/70 text-sm mb-6">Perfect for first-timers. No strings attached.</p>
+        <ul class="space-y-3 mb-8 font-body text-sm text-bark">
+          <li class="flex items-center gap-2"><span class="text-leaf font-bold">✓</span> Complete tifin meal</li>
+          <li class="flex items-center gap-2"><span class="text-leaf font-bold">✓</span> Free delivery</li>
+          <li class="flex items-center gap-2"><span class="text-leaf font-bold">✓</span> Order anytime</li>
+          <li class="flex items-center gap-2"><span class="text-leaf font-bold">✓</span> No commitment</li>
+        </ul>
+        <a href="#order" class="block text-center border-2 border-saffron text-saffron py-3.5 rounded-full font-body font-bold hover:bg-saffron hover:text-white transition-all duration-200">
+          Order Once
+        </a>
+      </div>
+
+      <!-- Weekly -->
+      <div class="lift-card bg-white rounded-3xl p-8 border-2 border-saffron/15 shadow-sm reveal reveal-delay-2">
+        <div class="font-body text-xs text-bark/60 uppercase tracking-widest font-bold mb-3">Weekly Plan</div>
+        <div class="flex items-baseline gap-1 mb-1">
+          <span class="font-display text-5xl font-black text-mud">₹70</span>
+          <span class="font-body text-bark text-sm">/ tifin</span>
+        </div>
+        <div class="inline-block bg-leaf/10 text-leaf text-xs font-body font-bold px-2.5 py-1 rounded-full mb-5">
+          Save ₹10/tifin
+        </div>
+        <p class="font-body text-bark/70 text-sm mb-6">Consistent home meals for 7 days.</p>
+        <ul class="space-y-3 mb-8 font-body text-sm text-bark">
+          <li class="flex items-center gap-2"><span class="text-leaf font-bold">✓</span> Complete tifin meal</li>
+          <li class="flex items-center gap-2"><span class="text-leaf font-bold">✓</span> Free delivery</li>
+          <li class="flex items-center gap-2"><span class="text-leaf font-bold">✓</span> 7-day subscription</li>
+          <li class="flex items-center gap-2"><span class="text-leaf font-bold">✓</span> Priority slot</li>
+        </ul>
+        <a href="#order" class="block text-center border-2 border-saffron text-saffron py-3.5 rounded-full font-body font-bold hover:bg-saffron hover:text-white transition-all duration-200">
+          Subscribe Weekly
+        </a>
+      </div>
+
+      <!-- Monthly – Popular -->
+      <div class="lift-card popular-outline bg-gradient-to-b from-saffron to-amber-700 text-white rounded-3xl p-8 relative overflow-hidden reveal reveal-delay-3">
+        <!-- Ribbon -->
+        <div class="absolute top-5 right-5 bg-white text-saffron text-[10px] font-body font-black uppercase tracking-widest px-3 py-1.5 rounded-full shadow-md">
+          ⭐ BEST VALUE
+        </div>
+        <div class="font-body text-xs text-white/70 uppercase tracking-widest font-bold mb-3">Monthly Plan</div>
+        <div class="flex items-baseline gap-1 mb-1">
+          <span class="font-display text-5xl font-black">₹60</span>
+          <span class="font-body text-white/80 text-sm">/ tifin</span>
+        </div>
+        <div class="inline-block bg-white/20 text-white text-xs font-body font-bold px-2.5 py-1 rounded-full mb-5">
+          Save ₹20/tifin · 25% off!
+        </div>
+        <p class="font-body text-white/80 text-sm mb-6">Best deal for daily tifin lovers.</p>
+        <ul class="space-y-3 mb-8 font-body text-sm text-white/90">
+          <li class="flex items-center gap-2"><span class="font-bold">⭐</span> Complete tifin meal</li>
+          <li class="flex items-center gap-2"><span class="font-bold">⭐</span> Free delivery</li>
+          <li class="flex items-center gap-2"><span class="font-bold">⭐</span> 30-day subscription</li>
+          <li class="flex items-center gap-2"><span class="font-bold">⭐</span> Priority slot</li>
+          <li class="flex items-center gap-2"><span class="font-bold">⭐</span> Maximum savings</li>
+        </ul>
+        <a href="#order" class="block text-center bg-white text-saffron py-3.5 rounded-full font-body font-extrabold hover:bg-mud hover:text-white transition-all duration-200">
+          Subscribe Monthly
+        </a>
+
+        <!-- Decorative dot -->
+        <div class="absolute -bottom-8 -left-8 w-32 h-32 bg-white/5 rounded-full"></div>
+        <div class="absolute -top-8 -right-8 w-24 h-24 bg-white/5 rounded-full"></div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- ═══════════════════════════════════════════════════════════════
+     ORDER SECTION
+═══════════════════════════════════════════════════════════════ -->
+<section id="order" class="py-24 relative overflow-hidden">
+
+  <div class="absolute inset-0 bg-gradient-to-br from-amber-50/80 to-orange-50/40 pointer-events-none"></div>
+  <div class="absolute bottom-0 left-1/2 -translate-x-1/2 w-[600px] h-[300px] bg-saffron/5 blur-3xl pointer-events-none"></div>
+
+  <div class="max-w-2xl mx-auto px-5 relative">
+
+    <div class="text-center mb-12 reveal">
+      <div class="section-badge mb-4">Place Your Order</div>
+      <h2 class="font-display text-4xl md:text-5xl font-bold text-mud mb-4">Ready to Eat?</h2>
+      <p class="font-body text-bark">Pick your preferences — we'll open WhatsApp with everything pre-filled!</p>
+    </div>
+
+    <div class="bg-white rounded-3xl shadow-xl border border-saffron/10 p-8 md:p-10 reveal">
+
+      <!-- Location -->
+      <div class="mb-7">
+        <label class="block font-body font-extrabold text-mud text-sm mb-2.5">
+          📍 Delivery Location
+        </label>
+        <select id="sel-location" class="">
+          <option value="">Select your area in Indore…</option>
+          <option value="Mangliya">Mangliya</option>
+          <option value="Talawali Chanda">Talawali Chanda</option>
+          <option value="Dewas Naka">Dewas Naka</option>
+          <option value="Nipaniya">Nipaniya</option>
+          <option value="Vijay Nagar">Vijay Nagar</option>
+        </select>
+      </div>
+
+      <!-- Meal time -->
+      <div class="mb-7">
+        <label class="block font-body font-extrabold text-mud text-sm mb-3">⏰ Meal Timing</label>
+        <div class="grid grid-cols-2 gap-3" id="mealtime-group">
+          <label class="radio-card" id="card-lunch">
+            <input type="radio" name="mealtime" value="Lunch (10 AM – 3 PM)" class="sr-only" />
+            <div class="p-5 text-center">
+              <div class="text-3xl mb-2">☀️</div>
+              <div class="font-display font-bold text-mud text-base">Lunch</div>
+              <div class="font-body text-xs text-bark mt-1">10 AM – 3 PM</div>
+            </div>
+          </label>
+          <label class="radio-card" id="card-dinner">
+            <input type="radio" name="mealtime" value="Dinner (6 PM – 10 PM)" class="sr-only" />
+            <div class="p-5 text-center">
+              <div class="text-3xl mb-2">🌙</div>
+              <div class="font-display font-bold text-mud text-base">Dinner</div>
+              <div class="font-body text-xs text-bark mt-1">6 PM – 10 PM</div>
+            </div>
+          </label>
+        </div>
+      </div>
+
+      <!-- Order type -->
+      <div class="mb-8">
+        <label class="block font-body font-extrabold text-mud text-sm mb-3">📋 Order Type</label>
+        <div class="grid grid-cols-3 gap-3" id="ordertype-group">
+          <label class="radio-card" id="card-onetime">
+            <input type="radio" name="ordertype" value="One-Time Order (₹80 / tifin)" class="sr-only" />
+            <div class="p-4 text-center">
+              <div class="font-display font-black text-mud text-xl">₹80</div>
+              <div class="font-body text-xs text-bark mt-1 font-semibold">One-Time</div>
+              <div class="font-body text-[10px] text-bark/60 mt-0.5">No commitment</div>
+            </div>
+          </label>
+          <label class="radio-card" id="card-weekly">
+            <input type="radio" name="ordertype" value="Weekly Subscription (₹70 / tifin)" class="sr-only" />
+            <div class="p-4 text-center">
+              <div class="font-display font-black text-mud text-xl">₹70</div>
+              <div class="font-body text-xs text-bark mt-1 font-semibold">Weekly</div>
+              <div class="font-body text-[10px] text-leaf mt-0.5 font-bold">Save ₹10</div>
+            </div>
+          </label>
+          <label class="radio-card relative" id="card-monthly">
+            <div class="absolute -top-2 left-1/2 -translate-x-1/2 bg-saffron text-white text-[9px] font-black uppercase px-2 py-0.5 rounded-full tracking-wide whitespace-nowrap">Best</div>
+            <input type="radio" name="ordertype" value="Monthly Subscription (₹60 / tifin)" class="sr-only" />
+            <div class="p-4 text-center pt-5">
+              <div class="font-display font-black text-mud text-xl">₹60</div>
+              <div class="font-body text-xs text-bark mt-1 font-semibold">Monthly</div>
+              <div class="font-body text-[10px] text-leaf mt-0.5 font-bold">Save ₹20</div>
+            </div>
+          </label>
+        </div>
+      </div>
+
+      <!-- Error msg -->
+      <div id="order-error" class="hidden bg-red-50 border border-red-200 text-red-600 text-sm font-body rounded-xl px-4 py-3 mb-5">
+        ⚠️ Please select all the options above before placing your order.
+      </div>
+
+      <!-- Submit -->
+      <button onclick="placeOrder()" class="w-full wa-green text-white py-4 rounded-full font-body font-extrabold text-lg flex items-center justify-center gap-2.5 shadow-md">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+        Order via WhatsApp
+      </button>
+      <p class="text-center font-body text-xs text-bark/50 mt-3">You'll be redirected to WhatsApp with your order details already filled in.</p>
+    </div>
+  </div>
+</section>
+
+
+<!-- ═══════════════════════════════════════════════════════════════
+     DELIVERY AREAS + TIMING
+═══════════════════════════════════════════════════════════════ -->
+<section class="py-24 bg-white/50">
+  <div class="max-w-5xl mx-auto px-5">
+
+    <div class="text-center mb-14 reveal">
+      <div class="section-badge mb-4">Where We Deliver</div>
+      <h2 class="font-display text-4xl md:text-5xl font-bold text-mud mb-4">Free Delivery in Indore</h2>
+      <p class="font-body text-bark">No hidden delivery charge — ever.</p>
+    </div>
+
+    <!-- Area pills -->
+    <div class="flex flex-wrap justify-center gap-3 mb-12 reveal">
+      <div class="lift-card flex items-center gap-2.5 bg-white border-2 border-saffron/20 rounded-full px-6 py-3.5 shadow-sm font-body font-bold text-mud">
+        <span class="text-saffron text-lg">📍</span> Mangliya
+      </div>
+      <div class="lift-card flex items-center gap-2.5 bg-white border-2 border-saffron/20 rounded-full px-6 py-3.5 shadow-sm font-body font-bold text-mud">
+        <span class="text-saffron text-lg">📍</span> Talawali Chanda
+      </div>
+      <div class="lift-card flex items-center gap-2.5 bg-white border-2 border-saffron/20 rounded-full px-6 py-3.5 shadow-sm font-body font-bold text-mud">
+        <span class="text-saffron text-lg">📍</span> Dewas Naka
+      </div>
+      <div class="lift-card flex items-center gap-2.5 bg-white border-2 border-saffron/20 rounded-full px-6 py-3.5 shadow-sm font-body font-bold text-mud">
+        <span class="text-saffron text-lg">📍</span> Nipaniya
+      </div>
+      <div class="lift-card flex items-center gap-2.5 bg-white border-2 border-saffron/20 rounded-full px-6 py-3.5 shadow-sm font-body font-bold text-mud">
+        <span class="text-saffron text-lg">📍</span> Vijay Nagar
+      </div>
+    </div>
+
+    <!-- Timing cards -->
+    <div class="grid md:grid-cols-2 gap-5 reveal">
+      <div class="lift-card bg-gradient-to-br from-amber-50 to-yellow-50 rounded-3xl p-7 border border-amber-200 flex items-center gap-5">
+        <div class="w-16 h-16 bg-amber-100 rounded-2xl flex items-center justify-center text-3xl flex-shrink-0">☀️</div>
+        <div>
+          <div class="font-display font-bold text-mud text-xl mb-1">Lunch Delivery</div>
+          <div class="font-body text-saffron font-extrabold text-lg">10:00 AM – 3:00 PM</div>
+          <div class="font-body text-bark text-sm mt-1">Order anytime before delivery</div>
+        </div>
+      </div>
+      <div class="lift-card bg-gradient-to-br from-indigo-50/60 to-purple-50/40 rounded-3xl p-7 border border-indigo-100 flex items-center gap-5">
+        <div class="w-16 h-16 bg-indigo-50 rounded-2xl flex items-center justify-center text-3xl flex-shrink-0">🌙</div>
+        <div>
+          <div class="font-display font-bold text-mud text-xl mb-1">Dinner Delivery</div>
+          <div class="font-body text-maroon font-extrabold text-lg">6:00 PM – 10:00 PM</div>
+          <div class="font-body text-bark text-sm mt-1">Order anytime before delivery</div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+
+<!-- ═══════════════════════════════════════════════════════════════
+     CONTACT / CTA
+═══════════════════════════════════════════════════════════════ -->
+<section id="contact" class="py-24 bg-gradient-to-b from-maroon to-[#5c1212] text-white relative overflow-hidden">
+
+  <!-- decorative circles -->
+  <div class="absolute top-0 right-0 w-72 h-72 bg-white/3 rounded-full -translate-y-1/3 translate-x-1/3"></div>
+  <div class="absolute bottom-0 left-0 w-56 h-56 bg-white/3 rounded-full translate-y-1/3 -translate-x-1/3"></div>
+
+  <div class="max-w-4xl mx-auto px-5 text-center relative">
+
+    <div class="reveal">
+      <div class="inline-block border border-white/20 rounded-full px-5 py-2 text-xs uppercase tracking-widest font-body font-bold text-white/70 mb-6">
+        We're just a tap away
+      </div>
+      <h2 class="font-display text-4xl md:text-5xl font-bold mb-4">Get In Touch</h2>
+      <p class="font-body text-white/65 mb-12 max-w-md mx-auto">Order anytime. We reply fast. Your warm tifin is waiting!</p>
+
+      <div class="flex flex-col sm:flex-row items-center justify-center gap-4 mb-12">
+        <a href="tel:8319341504" class="flex items-center justify-center gap-3 bg-white/10 hover:bg-white/20 border border-white/20 rounded-full px-7 py-4 font-body font-bold text-lg transition-all w-full sm:w-auto">
+          📞 &nbsp;8319341504
+        </a>
+        <a href="https://wa.me/918319341504" target="_blank" class="wa-green flex items-center justify-center gap-3 rounded-full px-7 py-4 font-body font-bold text-lg w-full sm:w-auto">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+          Chat on WhatsApp
+        </a>
+        <a href="mailto:nilesh.modi@gmail.com" class="flex items-center justify-center gap-3 bg-white/10 hover:bg-white/20 border border-white/20 rounded-full px-7 py-4 font-body font-bold text-lg transition-all w-full sm:w-auto">
+          ✉️ &nbsp;Email Us
+        </a>
+      </div>
+
+      <!-- Final note -->
+      <div class="border-t border-white/10 pt-10">
+        <p class="font-body italic text-white/50 text-sm max-w-md mx-auto">
+          "We cap at 50 tifins a day — not because we can't do more, but because every single tifin we deliver deserves to be extraordinary."
+        </p>
+        <p class="font-body text-white/40 text-xs mt-3">— Chanda Tifin Center, Indore</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ═══════════════════════════════════════════════════════════════
+     FOOTER
+═══════════════════════════════════════════════════════════════ -->
+<footer class="bg-mud text-white/50 py-10 font-body text-sm">
+  <div class="max-w-6xl mx-auto px-5 flex flex-col md:flex-row items-center justify-between gap-4">
+    <div>
+      <div class="font-display text-white font-bold text-xl mb-1">Chanda Tifin Center</div>
+      <div class="text-xs">Mangliya · Talawali Chanda · Dewas Naka · Nipaniya · Vijay Nagar · Indore</div>
+    </div>
+    <div class="text-center md:text-right text-xs">
+      <div class="mb-1">📞 8319341504 &nbsp;·&nbsp; ✉️ nilesh.modi@gmail.com</div>
+      <div>© 2024 Chanda Tifin Center. All rights reserved.</div>
+    </div>
+  </div>
+</footer>
+
+
+<!-- ═══════════════════════════════════════════════════════════════
+     JAVASCRIPT
+═══════════════════════════════════════════════════════════════ -->
+<script>
+  /* ── Mobile menu ── */
+  function toggleMenu() {
+    document.getElementById('mobile-menu').classList.toggle('open');
+  }
+
+  /* ── Scroll reveal ── */
+  const revealObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('up');
+        revealObserver.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+
+  document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
+
+  /* ── Radio card selection ── */
+  function wireRadioGroup(groupId) {
+    const group = document.getElementById(groupId);
+    if (!group) return;
+    group.querySelectorAll('input[type="radio"]').forEach(radio => {
+      radio.addEventListener('change', function () {
+        // reset all in this group
+        group.querySelectorAll('.radio-card').forEach(c => c.classList.remove('selected'));
+        // select current
+        this.closest('.radio-card').classList.add('selected');
+        // hide error if visible
+        document.getElementById('order-error').classList.add('hidden');
+      });
+    });
+  }
+  wireRadioGroup('mealtime-group');
+  wireRadioGroup('ordertype-group');
+
+  /* ── Place order → WhatsApp ── */
+  function placeOrder() {
+    const location  = document.getElementById('sel-location').value;
+    const mealtime  = document.querySelector('input[name="mealtime"]:checked')?.value;
+    const ordertype = document.querySelector('input[name="ordertype"]:checked')?.value;
+    const errEl     = document.getElementById('order-error');
+
+    if (!location || !mealtime || !ordertype) {
+      errEl.classList.remove('hidden');
+      errEl.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      return;
+    }
+
+    errEl.classList.add('hidden');
+
+    const msg =
+`Hello Chanda Tifin Center! 🍽️
+
+I'd like to place an order:
+
+📍 *Delivery Location:* ${location}
+⏰ *Meal Timing:* ${mealtime}
+📋 *Order Type:* ${ordertype}
+
+Please confirm my order. Thank you! 🙏`;
+
+    window.open(`https://wa.me/918319341504?text=${encodeURIComponent(msg)}`, '_blank');
+  }
+
+  /* ── Smooth scroll for anchor links ── */
+  document.querySelectorAll('a[href^="#"]').forEach(link => {
+    link.addEventListener('click', function (e) {
+      const target = document.querySelector(this.getAttribute('href'));
+      if (target) {
+        e.preventDefault();
+        target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+    });
+  });
+</script>
+
+</body>
+</html>
